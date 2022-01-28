@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Working with EMAP star &#8212; EMAP at UCLH</title>
+    <title>Working with EMAP star &#8212; HYLODE</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -54,7 +54,10 @@
     <link rel="next" title="Content in Jupyter Book" href="../90-using-jupyter-book/content.html" />
     <link rel="prev" title="EMAP quick tour" href="EMAP_quick_tour.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -78,7 +81,7 @@
       <img src="../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">EMAP at UCLH</h1>
+      <h1 class="site-logo" id="site-title">HYLODE</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -93,7 +96,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   EMAP for beginners
  </span>
@@ -115,7 +118,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Using JupyterBook
  </span>
@@ -137,7 +140,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendices
  </span>
@@ -199,7 +202,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -210,11 +213,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://inform-health-informatics.github.io/emap-helper/intro.html"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://hylode.github.io/emap-helper/intro.html"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://inform-health-informatics.github.io/emap-helper/intro.html/issues/new?title=Issue%20on%20page%20%2F01-emap-4-beginners/uclh-working-with-star.html&body=Your%20issue%20content%20here."><button
+            href="https://hylode.github.io/emap-helper/intro.html/issues/new?title=Issue%20on%20page%20%2F01-emap-4-beginners/uclh-working-with-star.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -233,7 +236,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -290,7 +293,67 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Working with EMAP star</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-set-up">
+   Basic set-up
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-environment-variables">
+   Load environment variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-first-example-script">
+   A first example script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-hospital-visits">
+   Working with hospital visits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simply-pull-hospital-visits">
+     Simply pull hospital visits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-in-hospital-numbers-mrn-and-handle-patient-merges">
+     Add in hospital numbers (MRN) and handle patient merges
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-in-patient-demographics">
+     Add in patient demographics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-observations">
+   Working with observations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="working-with-emap-star">
@@ -358,36 +421,36 @@
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Example script </span>
 <span class="c1">-- to pick out patients currently in A&amp;E resus or majors</span>
 
-<span class="k">SELECT</span>
-   <span class="n">vd</span><span class="p">.</span><span class="n">location_visit_id</span>
-  <span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">hospital_visit_id</span>
-  <span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">location_id</span>
-  <span class="c1">-- ugly HL7 location string </span>
-  <span class="p">,</span><span class="n">lo</span><span class="p">.</span><span class="n">location_string</span>
-  <span class="c1">-- time admitted to that bed/theatre/scan etc.</span>
-  <span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">admission_time</span>
-  <span class="c1">-- time discharged from that bed</span>
-  <span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">discharge_time</span>
+<span class="k">SELECT</span><span class="w"></span>
+<span class="w">   </span><span class="n">vd</span><span class="p">.</span><span class="n">location_visit_id</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">hospital_visit_id</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">location_id</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- ugly HL7 location string </span>
+<span class="w">  </span><span class="p">,</span><span class="n">lo</span><span class="p">.</span><span class="n">location_string</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- time admitted to that bed/theatre/scan etc.</span>
+<span class="w">  </span><span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">admission_time</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- time discharged from that bed</span>
+<span class="w">  </span><span class="p">,</span><span class="n">vd</span><span class="p">.</span><span class="n">discharge_time</span><span class="w"></span>
 
-<span class="k">FROM</span> <span class="n">star</span><span class="p">.</span><span class="n">location_visit</span> <span class="n">vd</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">location_visit</span><span class="w"> </span><span class="n">vd</span><span class="w"></span>
 <span class="c1">-- location label</span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="k">location</span> <span class="n">lo</span> <span class="k">ON</span> <span class="n">vd</span><span class="p">.</span><span class="n">location_id</span> <span class="o">=</span> <span class="n">lo</span><span class="p">.</span><span class="n">location_id</span>
-<span class="k">WHERE</span> 
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="k">location</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">vd</span><span class="p">.</span><span class="n">location_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lo</span><span class="p">.</span><span class="n">location_id</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span>
 <span class="c1">-- last few hours</span>
-<span class="n">vd</span><span class="p">.</span><span class="n">admission_time</span> <span class="o">&gt;</span> <span class="n">NOW</span><span class="p">()</span> <span class="o">-</span> <span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span>	
+<span class="n">vd</span><span class="p">.</span><span class="n">admission_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span><span class="w">	</span>
 <span class="c1">-- just CURRENT patients</span>
-<span class="k">AND</span>
-<span class="n">vd</span><span class="p">.</span><span class="n">discharge_time</span> <span class="k">IS</span> <span class="k">NULL</span>
+<span class="k">AND</span><span class="w"></span>
+<span class="n">vd</span><span class="p">.</span><span class="n">discharge_time</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
 <span class="c1">-- filter out just ED and Resus or Majors</span>
-<span class="k">AND</span>
+<span class="k">AND</span><span class="w"></span>
 <span class="c1">-- unpacking the HL7 string formatted as </span>
 <span class="c1">-- Department^Ward^Bed string</span>
-<span class="n">SPLIT_PART</span><span class="p">(</span><span class="n">lo</span><span class="p">.</span><span class="n">location_string</span><span class="p">,</span><span class="s1">&#39;^&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;ED&#39;</span>
-<span class="k">AND</span>
-<span class="n">SPLIT_PART</span><span class="p">(</span><span class="n">lo</span><span class="p">.</span><span class="n">location_string</span><span class="p">,</span><span class="s1">&#39;^&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">~</span> <span class="s1">&#39;(RESUS|MAJORS)&#39;</span>
+<span class="n">SPLIT_PART</span><span class="p">(</span><span class="n">lo</span><span class="p">.</span><span class="n">location_string</span><span class="p">,</span><span class="s1">&#39;^&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ED&#39;</span><span class="w"></span>
+<span class="k">AND</span><span class="w"></span>
+<span class="n">SPLIT_PART</span><span class="p">(</span><span class="n">lo</span><span class="p">.</span><span class="n">location_string</span><span class="p">,</span><span class="s1">&#39;^&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="s1">&#39;(RESUS|MAJORS)&#39;</span><span class="w"></span>
 <span class="c1">-- sort</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">lo</span><span class="p">.</span><span class="n">location_string</span>
-<span class="p">;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">lo</span><span class="p">.</span><span class="n">location_string</span><span class="w"></span>
+<span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The SQL script is stored at <code class="docutils literal notranslate"><span class="pre">../snippets/sql-vignettes/current_bed.sql</span></code>.<br />
@@ -419,30 +482,30 @@ We can load the script, and read the results into a Pandas dataframe.</p>
 </ol>
 <div class="section" id="simply-pull-hospital-visits">
 <h3>Simply pull hospital visits<a class="headerlink" href="#simply-pull-hospital-visits" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
-   <span class="n">vo</span><span class="p">.</span><span class="n">hospital_visit_id</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">encounter</span>
-  <span class="c1">-- admission to hospital</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">admission_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span>
-  <span class="c1">-- discharge from hospital</span>
-  <span class="c1">-- NB: Outpatients have admission events but not discharge events</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_disposition</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">   </span><span class="n">vo</span><span class="p">.</span><span class="n">hospital_visit_id</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">encounter</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- admission to hospital</span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">admission_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- discharge from hospital</span>
+<span class="w">  </span><span class="c1">-- NB: Outpatients have admission events but not discharge events</span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_disposition</span><span class="w"></span>
 
 <span class="c1">-- start from hospital visits</span>
-<span class="k">FROM</span> <span class="n">star</span><span class="p">.</span><span class="n">hospital_visit</span> <span class="n">vo</span>
-<span class="k">WHERE</span> 
-      <span class="c1">-- hospital visits within the last 12 hours</span>
-      <span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span> <span class="o">&gt;</span> <span class="n">NOW</span><span class="p">()</span> <span class="o">-</span> <span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span>	
-      <span class="c1">-- emergencies</span>
-  <span class="k">AND</span> <span class="n">vo</span><span class="p">.</span><span class="n">patient_class</span> <span class="o">=</span> <span class="s1">&#39;EMERGENCY&#39;</span>
-      <span class="c1">-- attending via ambulance</span>
-  <span class="k">AND</span> <span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span> <span class="o">=</span> <span class="s1">&#39;Ambulance&#39;</span>
-      <span class="c1">-- sort descending</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span> <span class="k">DESC</span>
-<span class="p">;</span> 
+<span class="k">FROM</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">hospital_visit</span><span class="w"> </span><span class="n">vo</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span>
+<span class="w">      </span><span class="c1">-- hospital visits within the last 12 hours</span>
+<span class="w">      </span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span><span class="w">	</span>
+<span class="w">      </span><span class="c1">-- emergencies</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">patient_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;EMERGENCY&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">-- attending via ambulance</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Ambulance&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">-- sort descending</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"> </span><span class="k">DESC</span><span class="w"></span>
+<span class="p">;</span><span class="w"> </span>
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -461,38 +524,38 @@ We can load the script, and read the results into a Pandas dataframe.</p>
 <h3>Add in hospital numbers (MRN) and handle patient merges<a class="headerlink" href="#add-in-hospital-numbers-mrn-and-handle-patient-merges" title="Permalink to this headline">¶</a></h3>
 <p>See the series of joins in the middle of the script that retrieve the live MRN.
 That is we recognise that patients may have had an episode of care with one MRN, and then that episode was merged with another historical MRN. One of those two MRNs will then become the ‘live’ MRN and can be used to trace the patient across what otherwise would be different identities.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
-   <span class="n">vo</span><span class="p">.</span><span class="n">hospital_visit_id</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">encounter</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">admission_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_disposition</span>
-  <span class="c1">-- original MRN</span>
-  <span class="p">,</span><span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn</span> <span class="k">AS</span> <span class="n">original_mrn</span>
-  <span class="c1">-- live MRN</span>
-  <span class="p">,</span><span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn</span> <span class="k">AS</span> <span class="n">live_mrn</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">   </span><span class="n">vo</span><span class="p">.</span><span class="n">hospital_visit_id</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">encounter</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">admission_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_disposition</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- original MRN</span>
+<span class="w">  </span><span class="p">,</span><span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">original_mrn</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- live MRN</span>
+<span class="w">  </span><span class="p">,</span><span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">live_mrn</span><span class="w"></span>
 
 <span class="c1">-- start from hospital visits</span>
-<span class="k">FROM</span> <span class="n">star</span><span class="p">.</span><span class="n">hospital_visit</span> <span class="n">vo</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">hospital_visit</span><span class="w"> </span><span class="n">vo</span><span class="w"></span>
 <span class="c1">-- get original mrn</span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="n">mrn</span> <span class="n">original_mrn</span> <span class="k">ON</span> <span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span> <span class="o">=</span> <span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn_id</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="n">original_mrn</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"></span>
 <span class="c1">-- get mrn to live mapping </span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="n">mrn_to_live</span> <span class="n">mtl</span> <span class="k">ON</span> <span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span> <span class="o">=</span> <span class="n">mtl</span><span class="p">.</span><span class="n">mrn_id</span> 
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">mrn_to_live</span><span class="w"> </span><span class="n">mtl</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtl</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span>
 <span class="c1">-- get live mrn </span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="n">mrn</span> <span class="n">live_mrn</span> <span class="k">ON</span> <span class="n">mtl</span><span class="p">.</span><span class="n">live_mrn_id</span> <span class="o">=</span> <span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn_id</span> 
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="n">live_mrn</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">mtl</span><span class="p">.</span><span class="n">live_mrn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span>
 
-<span class="k">WHERE</span> 
-      <span class="c1">-- hospital visits within the last 12 hours</span>
-      <span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span> <span class="o">&gt;</span> <span class="n">NOW</span><span class="p">()</span> <span class="o">-</span> <span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span>	
-      <span class="c1">-- emergencies</span>
-  <span class="k">AND</span> <span class="n">vo</span><span class="p">.</span><span class="n">patient_class</span> <span class="o">=</span> <span class="s1">&#39;EMERGENCY&#39;</span>
-      <span class="c1">-- attending via ambulance</span>
-  <span class="k">AND</span> <span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span> <span class="o">=</span> <span class="s1">&#39;Ambulance&#39;</span>
-      <span class="c1">-- sort descending</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span> <span class="k">DESC</span>
-<span class="p">;</span> 
+<span class="k">WHERE</span><span class="w"> </span>
+<span class="w">      </span><span class="c1">-- hospital visits within the last 12 hours</span>
+<span class="w">      </span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span><span class="w">	</span>
+<span class="w">      </span><span class="c1">-- emergencies</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">patient_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;EMERGENCY&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">-- attending via ambulance</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Ambulance&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">-- sort descending</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"> </span><span class="k">DESC</span><span class="w"></span>
+<span class="p">;</span><span class="w"> </span>
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -509,49 +572,49 @@ That is we recognise that patients may have had an episode of care with one MRN,
 </div>
 <div class="section" id="add-in-patient-demographics">
 <h3>Add in patient demographics<a class="headerlink" href="#add-in-patient-demographics" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span>
-   <span class="n">vo</span><span class="p">.</span><span class="n">hospital_visit_id</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">encounter</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">admission_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_time</span>
-  <span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_disposition</span>
-  <span class="c1">-- original MRN</span>
-  <span class="p">,</span><span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn</span> <span class="k">AS</span> <span class="n">original_mrn</span>
-  <span class="c1">-- live MRN</span>
-  <span class="p">,</span><span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn</span> <span class="k">AS</span> <span class="n">live_mrn</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">   </span><span class="n">vo</span><span class="p">.</span><span class="n">hospital_visit_id</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">encounter</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">admission_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_time</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">vo</span><span class="p">.</span><span class="n">discharge_disposition</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- original MRN</span>
+<span class="w">  </span><span class="p">,</span><span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">original_mrn</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- live MRN</span>
+<span class="w">  </span><span class="p">,</span><span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">live_mrn</span><span class="w"></span>
 
-  <span class="c1">-- core demographics</span>
-  <span class="p">,</span><span class="n">cd</span><span class="p">.</span><span class="n">date_of_birth</span>
-  <span class="c1">-- convert dob to age in years</span>
-  <span class="p">,</span><span class="n">date_part</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">AGE</span><span class="p">(</span><span class="n">cd</span><span class="p">.</span><span class="n">date_of_birth</span><span class="p">))</span> <span class="k">AS</span> <span class="n">age</span>
-  <span class="p">,</span><span class="n">cd</span><span class="p">.</span><span class="n">sex</span>
-  <span class="p">,</span><span class="n">cd</span><span class="p">.</span><span class="n">home_postcode</span>
-  <span class="c1">-- grab initials from first and last name</span>
-  <span class="p">,</span><span class="n">CONCAT</span><span class="p">(</span><span class="k">LEFT</span><span class="p">(</span><span class="n">cd</span><span class="p">.</span><span class="n">firstname</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="k">LEFT</span><span class="p">(</span><span class="n">cd</span><span class="p">.</span><span class="n">lastname</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="k">AS</span> <span class="n">initials</span>
+<span class="w">  </span><span class="c1">-- core demographics</span>
+<span class="w">  </span><span class="p">,</span><span class="n">cd</span><span class="p">.</span><span class="n">date_of_birth</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- convert dob to age in years</span>
+<span class="w">  </span><span class="p">,</span><span class="n">date_part</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">AGE</span><span class="p">(</span><span class="n">cd</span><span class="p">.</span><span class="n">date_of_birth</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">age</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">cd</span><span class="p">.</span><span class="n">sex</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">cd</span><span class="p">.</span><span class="n">home_postcode</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- grab initials from first and last name</span>
+<span class="w">  </span><span class="p">,</span><span class="n">CONCAT</span><span class="p">(</span><span class="k">LEFT</span><span class="p">(</span><span class="n">cd</span><span class="p">.</span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">cd</span><span class="p">.</span><span class="n">lastname</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">initials</span><span class="w"></span>
 
 <span class="c1">-- start from hospital visits</span>
-<span class="k">FROM</span> <span class="n">star</span><span class="p">.</span><span class="n">hospital_visit</span> <span class="n">vo</span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="n">core_demographic</span> <span class="n">cd</span> <span class="k">ON</span> <span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span> <span class="o">=</span> <span class="n">cd</span><span class="p">.</span><span class="n">mrn_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">hospital_visit</span><span class="w"> </span><span class="n">vo</span><span class="w"></span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">core_demographic</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cd</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"></span>
 
 <span class="c1">-- get original mrn</span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="n">mrn</span> <span class="n">original_mrn</span> <span class="k">ON</span> <span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span> <span class="o">=</span> <span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn_id</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="n">original_mrn</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">original_mrn</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"></span>
 <span class="c1">-- get mrn to live mapping </span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="n">mrn_to_live</span> <span class="n">mtl</span> <span class="k">ON</span> <span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span> <span class="o">=</span> <span class="n">mtl</span><span class="p">.</span><span class="n">mrn_id</span> 
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">mrn_to_live</span><span class="w"> </span><span class="n">mtl</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtl</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span>
 <span class="c1">-- get live mrn </span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">star</span><span class="p">.</span><span class="n">mrn</span> <span class="n">live_mrn</span> <span class="k">ON</span> <span class="n">mtl</span><span class="p">.</span><span class="n">live_mrn_id</span> <span class="o">=</span> <span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn_id</span> 
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">star</span><span class="p">.</span><span class="n">mrn</span><span class="w"> </span><span class="n">live_mrn</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">mtl</span><span class="p">.</span><span class="n">live_mrn_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">live_mrn</span><span class="p">.</span><span class="n">mrn_id</span><span class="w"> </span>
 
-<span class="k">WHERE</span> 
-      <span class="c1">-- hospital visits within the last 12 hours</span>
-      <span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span> <span class="o">&gt;</span> <span class="n">NOW</span><span class="p">()</span> <span class="o">-</span> <span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span>	
-      <span class="c1">-- emergencies</span>
-  <span class="k">AND</span> <span class="n">vo</span><span class="p">.</span><span class="n">patient_class</span> <span class="o">=</span> <span class="s1">&#39;EMERGENCY&#39;</span>
-      <span class="c1">-- attending via ambulance</span>
-  <span class="k">AND</span> <span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span> <span class="o">=</span> <span class="s1">&#39;Ambulance&#39;</span>
-      <span class="c1">-- sort descending</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span> <span class="k">DESC</span>
-<span class="p">;</span> 
+<span class="k">WHERE</span><span class="w"> </span>
+<span class="w">      </span><span class="c1">-- hospital visits within the last 12 hours</span>
+<span class="w">      </span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;12 HOURS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span><span class="w">	</span>
+<span class="w">      </span><span class="c1">-- emergencies</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">patient_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;EMERGENCY&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">-- attending via ambulance</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">arrival_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Ambulance&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">-- sort descending</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">vo</span><span class="p">.</span><span class="n">presentation_time</span><span class="w"> </span><span class="k">DESC</span><span class="w"></span>
+<span class="p">;</span><span class="w"> </span>
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -576,54 +639,54 @@ That is we recognise that patients may have had an episode of care with one MRN,
 <span class="c1">-- for current inpatients in the last few minutes</span>
 
 
-<span class="k">SELECT</span>
-  <span class="c1">-- observation details</span>
-   <span class="n">ob</span><span class="p">.</span><span class="n">visit_observation_id</span>
-  <span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">hospital_visit_id</span>
-  <span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">observation_datetime</span>
+<span class="k">SELECT</span><span class="w"></span>
+<span class="w">  </span><span class="c1">-- observation details</span>
+<span class="w">   </span><span class="n">ob</span><span class="p">.</span><span class="n">visit_observation_id</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">hospital_visit_id</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">observation_datetime</span><span class="w"></span>
 
-  <span class="c1">--,ob.visit_observation_type_id</span>
-  <span class="c1">--,ot.id_in_application</span>
+<span class="w">  </span><span class="c1">--,ob.visit_observation_type_id</span>
+<span class="w">  </span><span class="c1">--,ot.id_in_application</span>
 
-  <span class="c1">-- label nicely</span>
-  <span class="p">,</span><span class="k">CASE</span> 
-    <span class="k">WHEN</span> <span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;SpO2&#39;</span>
-    <span class="k">WHEN</span> <span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="o">=</span> <span class="s1">&#39;5&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;BP&#39;</span>
-    <span class="k">WHEN</span> <span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="o">=</span> <span class="s1">&#39;3040109304&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;Oxygen&#39;</span>
-    <span class="k">WHEN</span> <span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="o">=</span> <span class="s1">&#39;6&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;Temp&#39;</span>
-    <span class="k">WHEN</span> <span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="o">=</span> <span class="s1">&#39;8&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;Pulse&#39;</span>
-    <span class="k">WHEN</span> <span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="o">=</span> <span class="s1">&#39;9&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;Resp&#39;</span>
-    <span class="k">WHEN</span> <span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="o">=</span> <span class="s1">&#39;6466&#39;</span> <span class="k">THEN</span> <span class="s1">&#39;AVPU&#39;</span>
+<span class="w">  </span><span class="c1">-- label nicely</span>
+<span class="w">  </span><span class="p">,</span><span class="k">CASE</span><span class="w"> </span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;10&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;SpO2&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;5&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;BP&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;3040109304&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Oxygen&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Temp&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;8&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Pulse&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;9&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;Resp&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;6466&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;AVPU&#39;</span><span class="w"></span>
 
-  <span class="k">END</span> <span class="k">AS</span> <span class="n">vital</span>
+<span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">vital</span><span class="w"></span>
 
-  <span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">value_as_real</span>
-  <span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">value_as_text</span>
-  <span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">unit</span> 
-  
-<span class="k">FROM</span>
-  <span class="n">star</span><span class="p">.</span><span class="n">visit_observation</span> <span class="n">ob</span>
+<span class="w">  </span><span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">value_as_real</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">value_as_text</span><span class="w"></span>
+<span class="w">  </span><span class="p">,</span><span class="n">ob</span><span class="p">.</span><span class="n">unit</span><span class="w"> </span>
+<span class="w">  </span>
+<span class="k">FROM</span><span class="w"></span>
+<span class="w">  </span><span class="n">star</span><span class="p">.</span><span class="n">visit_observation</span><span class="w"> </span><span class="n">ob</span><span class="w"></span>
 <span class="c1">-- observation look-up</span>
-<span class="k">LEFT</span> <span class="k">JOIN</span>
-  <span class="n">star</span><span class="p">.</span><span class="n">visit_observation_type</span> <span class="n">ot</span>
-  <span class="k">on</span> <span class="n">ob</span><span class="p">.</span><span class="n">visit_observation_type_id</span> <span class="o">=</span> <span class="n">ot</span><span class="p">.</span><span class="n">visit_observation_type_id</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"></span>
+<span class="w">  </span><span class="n">star</span><span class="p">.</span><span class="n">visit_observation_type</span><span class="w"> </span><span class="n">ot</span><span class="w"></span>
+<span class="w">  </span><span class="k">on</span><span class="w"> </span><span class="n">ob</span><span class="p">.</span><span class="n">visit_observation_type_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ot</span><span class="p">.</span><span class="n">visit_observation_type_id</span><span class="w"></span>
 
-<span class="k">WHERE</span>
-<span class="n">ob</span><span class="p">.</span><span class="n">observation_datetime</span> <span class="o">&gt;</span> <span class="n">NOW</span><span class="p">()</span> <span class="o">-</span> <span class="s1">&#39;5 MINS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span>	
-<span class="k">AND</span>
-<span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span> <span class="k">in</span> 
+<span class="k">WHERE</span><span class="w"></span>
+<span class="n">ob</span><span class="p">.</span><span class="n">observation_datetime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;5 MINS&#39;</span><span class="p">::</span><span class="nb">INTERVAL</span><span class="w">	</span>
+<span class="k">AND</span><span class="w"></span>
+<span class="n">ot</span><span class="p">.</span><span class="n">id_in_application</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>
 
-  <span class="p">(</span>
-  <span class="s1">&#39;10&#39;</span>            <span class="c1">--&#39;SpO2&#39;                  -- 602063230</span>
-  <span class="p">,</span><span class="s1">&#39;5&#39;</span>            <span class="c1">--&#39;BP&#39;                    -- 602063234</span>
-  <span class="p">,</span><span class="s1">&#39;3040109304&#39;</span>   <span class="c1">--&#39;Room Air or Oxygen&#39;    -- 602063268</span>
-  <span class="p">,</span><span class="s1">&#39;6&#39;</span>            <span class="c1">--&#39;Temp&#39;                  -- 602063248</span>
-  <span class="p">,</span><span class="s1">&#39;8&#39;</span>            <span class="c1">--&#39;Pulse&#39;                 -- 602063237</span>
-  <span class="p">,</span><span class="s1">&#39;9&#39;</span>            <span class="c1">--&#39;Resp&#39;                  -- 602063257</span>
-  <span class="p">,</span><span class="s1">&#39;6466&#39;</span>         <span class="c1">-- Level of consciousness</span>
-<span class="p">)</span>
-<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">ob</span><span class="p">.</span><span class="n">observation_datetime</span> <span class="k">DESC</span>
-<span class="p">;</span>
+<span class="w">  </span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="s1">&#39;10&#39;</span><span class="w">            </span><span class="c1">--&#39;SpO2&#39;                  -- 602063230</span>
+<span class="w">  </span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="w">            </span><span class="c1">--&#39;BP&#39;                    -- 602063234</span>
+<span class="w">  </span><span class="p">,</span><span class="s1">&#39;3040109304&#39;</span><span class="w">   </span><span class="c1">--&#39;Room Air or Oxygen&#39;    -- 602063268</span>
+<span class="w">  </span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="w">            </span><span class="c1">--&#39;Temp&#39;                  -- 602063248</span>
+<span class="w">  </span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="w">            </span><span class="c1">--&#39;Pulse&#39;                 -- 602063237</span>
+<span class="w">  </span><span class="p">,</span><span class="s1">&#39;9&#39;</span><span class="w">            </span><span class="c1">--&#39;Resp&#39;                  -- 602063257</span>
+<span class="w">  </span><span class="p">,</span><span class="s1">&#39;6466&#39;</span><span class="w">         </span><span class="c1">-- Level of consciousness</span>
+<span class="p">)</span><span class="w"></span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">ob</span><span class="p">.</span><span class="n">observation_datetime</span><span class="w"> </span><span class="k">DESC</span><span class="w"></span>
+<span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -693,54 +756,42 @@ That is we recognise that patients may have had an episode of care with one MRN,
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="EMAP_quick_tour.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">EMAP quick tour</p>
-            </div>
-        </a>
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="EMAP_quick_tour.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">EMAP quick tour</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../90-using-jupyter-book/content.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Content in Jupyter Book</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../90-using-jupyter-book/content.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Content in Jupyter Book</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Steve Harris<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Steve Harris<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
