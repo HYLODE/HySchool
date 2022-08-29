@@ -1,0 +1,43 @@
+project:
+  type: website
+  render:
+    - index.qmd
+    - "tutorials/"
+    - "!contributing/*"
+    - "*.md"
+    - about.qmd
+
+website:
+  title: "HySchool"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: tutorials/tutorials.md
+        text: Tutorials
+      - about.qmd
+
+  search:
+    location: navbar 
+    type: overlay
+  sidebar:
+    style: "floating"
+    contents:
+      - section: "Basics"
+        contents:
+        - index.qmd
+        - about.qmd
+
+      - section: "Tutorials"
+        contents:
+          - tutorials/tutorials.md
+          - tutorials/think-bayes.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,22 @@
+---
+title: "Developer set-up"
+---
+
+## Basic Quarto set-up
+
+
+```bash
+cd hyschool
+conda create --name quarto python=3.9 jupyter matplotlib plotly_express
+conda activate quarto
+```
+
+then followed instructions here
+https://quarto.org/docs/websites/
+
+```bash
+quarto create-project hyschool --type website
+quarto preview hyschool
+```
+
+

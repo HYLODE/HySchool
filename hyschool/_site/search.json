@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "HySchool",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site.\nNot much to say here … yet!"
+  },
+  {
+    "objectID": "dev-howto.html",
+    "href": "dev-howto.html",
+    "title": "Developer set-up",
+    "section": "",
+    "text": "cd hyschool\nconda create --name quarto python=3.9 jupyter matplotlib plotly_express\nconda activate quarto\nthen followed instructions here https://quarto.org/docs/websites/\nquarto create-project hyschool --type website\nquarto preview hyschool"
+  },
+  {
+    "objectID": "tutorials/tutorials.html",
+    "href": "tutorials/tutorials.html",
+    "title": "Some tutorials",
+    "section": "",
+    "text": "Now you can learn something"
+  },
+  {
+    "objectID": "tutorials/think-bayes.html",
+    "href": "tutorials/think-bayes.html",
+    "title": "Think Bayes",
+    "section": "",
+    "text": "and some bayes stuff"
+  }
+]

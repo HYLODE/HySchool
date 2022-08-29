@@ -1,0 +1,5 @@
+---
+title: Think Bayes
+---
+
+and some bayes stuff
