@@ -1,0 +1,966 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Vignette - data flow &#8212; HySchool</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">HySchool</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  EMAP for beginners
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-emap-4-beginners/how_to_use_this_guide.html">
+   How to use this guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-emap-4-beginners/EMAP_quick_tour.html">
+   EMAP quick tour
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-emap-4-beginners/uclh-working-with-star.html">
+   Working with EMAP star
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FlowEHR
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="vignette_0__README.html">
+   Hi
+   <em>
+    (Hy?)
+   </em>
+   there…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vignette_0_intro.html">
+   Vignette - end-to-end exemplar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vignette_1_training_set.html">
+   Vignette - HyCastle, the lens and building a training set
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vignette_2_modelling.html">
+   Vignette - a Modelling Workflow
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Using JupyterBook
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../90-using-jupyter-book/content.html">
+   Content in Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../90-using-jupyter-book/markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../90-using-jupyter-book/notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../95-Appendices/using-superset.html">
+   Superset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../95-Appendices/configuring-R-at-UCLH.html">
+   Configuring R at UCLH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../95-Appendices/tips.html">
+   Miscellaneous tips
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/hylode/HySchool at UCLH/dev?urlpath=tree/docs/20-flowehr/vignette_3_data_flow.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/hylode/HySchool at UCLH"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/hylode/HySchool at UCLH/issues/new?title=Issue%20on%20page%20%2F20-flowehr/vignette_3_data_flow.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/20-flowehr/vignette_3_data_flow.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-over-arching-view">
+   An over-arching view
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-example-hyflow-fetch-episode-slices">
+   An example: HyFlow fetch_episode_slices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sql-extraction-code">
+     SQL extraction code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#processing-and-storage-in-hylode-db">
+     Processing and storage in hylode_db
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-example-hygear-transformers">
+   Another example: HyGear transformers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformers-under-the-hood">
+     Transformers under the hood
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-1-running-sql-in-jupyter">
+   Appendix 1: Running SQL in Jupyter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emap-credentials">
+     EMAP credentials
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-2-running-some-transformer-code">
+   Appendix 2: Running some Transformer code
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Vignette - data flow</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-over-arching-view">
+   An over-arching view
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-example-hyflow-fetch-episode-slices">
+   An example: HyFlow fetch_episode_slices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sql-extraction-code">
+     SQL extraction code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#processing-and-storage-in-hylode-db">
+     Processing and storage in hylode_db
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-example-hygear-transformers">
+   Another example: HyGear transformers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformers-under-the-hood">
+     Transformers under the hood
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-1-running-sql-in-jupyter">
+   Appendix 1: Running SQL in Jupyter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#emap-credentials">
+     EMAP credentials
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-2-running-some-transformer-code">
+   Appendix 2: Running some Transformer code
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="vignette-data-flow">
+<h1>Vignette - data flow<a class="headerlink" href="#vignette-data-flow" title="Permalink to this headline">#</a></h1>
+<p>What follows is a quick tour under the hood of Hylode…</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">vignette_1_training_set</span></code>, we miraculously wound up with a usable set of features on running <code class="docutils literal notranslate"><span class="pre">retro_dataset</span></code>. This is of course because they had been lovingly built by Nel in advance.</p>
+<p>This notebook is aimed as a leg-up in getting your bearings around how Hylode ingests and processes data from EMAP. I include the different pieces of code and ways of thinking that have helped me, in the hope they will help others.</p>
+<section id="an-over-arching-view">
+<h2>An over-arching view<a class="headerlink" href="#an-over-arching-view" title="Permalink to this headline">#</a></h2>
+<p>As good a starting point as any is the HySys architectural diagram linked to <a class="reference external" href="https://github.com/HYLODE/HyLevel/blob/main/system-design/HYLODE.png?raw=True">here</a>. (<em>You need to be logged into GitHub to view</em>)</p>
+<p>This picture gives an overview of how the system fits together. In terms of data ingestion, we can see HyFlow and HyGear, the two components responsible for fetching and transforming the data from EMAP (&amp; other sources). Then sitting above them, there is HyCommand which controls different requests for the various subcomponents.</p>
+<p>In the current version, an example of how HyCommand does its work can be found in the ICU Demand <a class="reference external" href="https://github.com/HYLODE/HySys/blob/dev/hylode/hycommand/dags/icu_demand.py">dag</a>. This scheduled code triggers the appropriate actions from HyFlow and HyGear for initial ingestion and transformation of the data.</p>
+<p>(The PowerPoint slide <code class="docutils literal notranslate"><span class="pre">DAG.pptx</span></code> in this directory (download by opening in a new window) shows you the complete set operations the DAG triggers. Don’t be disheartened if this seems like a bit much, we will have a look at it piece-by-piece…)</p>
+</section>
+<section id="an-example-hyflow-fetch-episode-slices">
+<h2>An example: HyFlow fetch_episode_slices<a class="headerlink" href="#an-example-hyflow-fetch-episode-slices" title="Permalink to this headline">#</a></h2>
+<p>Looking at that file for the dag, let’s start by looking at the code here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">fetch_episode_slices_task</span> <span class="o">=</span> <span class="n">SimpleHttpOperator</span><span class="p">(</span>
+            <span class="n">task_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;fetch_episode_slices-</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">http_conn_id</span><span class="o">=</span><span class="s2">&quot;hyflow_api&quot;</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;/trigger/fetch/icu/episode_slices&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">default_http_headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">fetch_task_input</span><span class="p">),</span>
+            <span class="n">extra_options</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;check_response&quot;</span><span class="p">:</span> <span class="kc">False</span>
+            <span class="p">},</span>  <span class="c1"># turn off the default response check</span>
+            <span class="n">response_check</span><span class="o">=</span><span class="n">skip_on_empty_result_set</span><span class="p">,</span>  <span class="c1"># add a custom response check</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>This makes the API call to the hyflow_api to fetch the episode slices for a given ward. This can be found beautifully documented by looking at the HyFlow API docs (<a class="reference external" href="http://uclvlddpragae08:5004/docs">here</a> at the time of writing). Here we can see that <code class="docutils literal notranslate"><span class="pre">fetch_episode_slices</span></code> is designed to:</p>
+<blockquote>
+<div><p>Append Hylode episode slices to the <code class="docutils literal notranslate"><span class="pre">hyflow.icu_episode_slices_log</span></code> table
+for episodes which were active on the ward at the horizon.</p>
+</div></blockquote>
+<blockquote>
+<div><p>A Hylode episode is defined as a stay on a specific ward
+with a limited allowable break between bed location visits on that ward.
+An episode slice is a fraction, up to &amp; incl 100%, of an episode.</p>
+</div></blockquote>
+<section id="sql-extraction-code">
+<h3>SQL extraction code<a class="headerlink" href="#sql-extraction-code" title="Permalink to this headline">#</a></h3>
+<p>Digging a little bit deeper, we can trace this back to the SQL code. The code corresponding to <code class="docutils literal notranslate"><span class="pre">fetch_episode_slices</span></code> can be found in the function <code class="docutils literal notranslate"><span class="pre">fetch_episode_slices</span></code> found in the definition of the endpoint <a class="reference external" href="https://github.com/HYLODE/HySys/blob/dev/hylode/hyflow/src/hyflow/endpoints/task.py">here</a>. Here we can see the following code slice:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">episode_slices_df</span> <span class="o">=</span> <span class="n">icu_episode_slices_from_emap</span><span class="p">(</span>
+        <span class="n">ward</span><span class="p">,</span> <span class="n">horizon_dt</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">beds_df</span><span class="o">.</span><span class="n">hl7_location</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s perhaps have a look at what this <code class="docutils literal notranslate"><span class="pre">icu_episode_slices_from_emap</span></code> function is…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hyflow.fetch.icu.icu_episode_slices</span> <span class="kn">import</span> <span class="n">icu_episode_slices_from_emap</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">hyflow.fetch.icu.icu_episode_slices</span> <span class="kn">import</span> <span class="n">icu_episode_slices_from_emap</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;hyflow&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>??icu_episode_slices_from_emap
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay… so looking at this we can see that this function first call <code class="docutils literal notranslate"><span class="pre">icu_location_visits_from_emap</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hyflow.fetch.icu.icu_episode_slices</span> <span class="kn">import</span> <span class="n">_icu_location_visits_from_emap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>??_icu_location_visits_from_emap
+</pre></div>
+</div>
+</div>
+</div>
+<p>…which in turn is running an sql query from file <code class="docutils literal notranslate"><span class="pre">emap__icu_location_visit_history.sql</span></code>. Looking this up in the Hylode code, we find the corresponding file <a class="reference external" href="https://github.com/HYLODE/HySys/blob/dev/hylode/hyflow/src/hyflow/sql/emap__icu_location_visit_history.sql">here</a> and can run the corresponding query in DBForge (being sure to substitute for the parameters prefixed by %)</p>
+<p>Alternatively we can do that here in a notebook… (see appendix 1)</p>
+</section>
+<section id="processing-and-storage-in-hylode-db">
+<h3>Processing and storage in hylode_db<a class="headerlink" href="#processing-and-storage-in-hylode-db" title="Permalink to this headline">#</a></h3>
+<p>Following through on the rest of the definition of <code class="docutils literal notranslate"><span class="pre">icu_episode_slices_from_emap</span></code>, we can see this function goes onto call <code class="docutils literal notranslate"><span class="pre">_coalesce_icu_location_visits_into_episode_slices</span></code> which generates our notion of ICU location visits (as described in the functions docstring - see using the ?? shortcut).</p>
+<p>Then returning back again to the code for <code class="docutils literal notranslate"><span class="pre">fetch_icu_episode_slices</span></code> we can see a call <code class="docutils literal notranslate"><span class="pre">df_to_hylode_db</span></code>. This is where the dataframe extracted from EMAP and then restructured to episode slices is stored in the Hylode databases.</p>
+<p>A very comparable process happens to bring in the observations into Hylode, so with some ferreting out (along the lines above) it should be possible to find the corresponding pieces of code. Next up is to transform the data from there…</p>
+</section>
+</section>
+<section id="another-example-hygear-transformers">
+<h2>Another example: HyGear transformers<a class="headerlink" href="#another-example-hygear-transformers" title="Permalink to this headline">#</a></h2>
+<p>In talking about how the Hylode ML system works, often a lot of discussions come back to the transformers. These are the pieces of code that take the data from a format not a million miles from that in EMAP into reproducible features for both retrospective model training and deployment.</p>
+<p>As in our section above on HyFlow the HyGear transformers are called on a schedule from the ICU Demand <a class="reference external" href="https://github.com/HYLODE/HySys/blob/dev/hylode/hycommand/dags/icu_sitrep.py">dag</a>.</p>
+<p>Take for instance the code here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">generate_icu_temporal_task</span> <span class="o">=</span> <span class="n">SimpleHttpOperator</span><span class="p">(</span>
+            <span class="n">task_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;generate_icu_temporal-</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">http_conn_id</span><span class="o">=</span><span class="s2">&quot;hygear_api&quot;</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;/trigger/generate/icu/cog1/temporal&quot;</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">default_http_headers</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">transform_task_input</span><span class="p">),</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>This makes the API call to the hygear_api to generate the ICU patient temporal features (age, elapsed length-of-stay etc.) for a given ward. This can be found beautifully documented by looking at the HyGear API docs (<a class="reference external" href="http://uclvlddpragae08:5005/docs">here</a> at the time of writing). Here we can see that <code class="docutils literal notranslate"><span class="pre">temporal</span></code> is designed to:</p>
+<blockquote>
+<div><p>Append temporal features to the <code class="docutils literal notranslate"><span class="pre">hygear.icu_temporal_log</span></code> table
+for episode slices active on the ward at the horizon.</p>
+</div></blockquote>
+<section id="transformers-under-the-hood">
+<h3>Transformers under the hood<a class="headerlink" href="#transformers-under-the-hood" title="Permalink to this headline">#</a></h3>
+<p>Again we can go back to the definition of the endpoint found in this case <a class="reference external" href="https://github.com/HYLODE/HySys/blob/dev/hylode/hygear/src/hygear/endpoints/cog1_endpoints.py">here</a> where we have the function <code class="docutils literal notranslate"><span class="pre">generate_icu_temporal</span></code>. This code allows us to actually look under the hood of the transformer. What we can see happening is that this code is pulling out the <code class="docutils literal notranslate"><span class="pre">icu_patients_from_hyflow</span></code> and applying a series of Transformer functions to them, namely: <code class="docutils literal notranslate"><span class="pre">AdmissionAgeTransformer</span></code> and <code class="docutils literal notranslate"><span class="pre">LengthOfStayTransformer</span></code>. Let’s have a look at one of these…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hygear.transform.cog1.icu_temporal</span> <span class="kn">import</span> <span class="n">AdmissionAgeTransformer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>AdmissionAgeTransformer??
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that the transformer is a class. It takes a series of specified <code class="docutils literal notranslate"><span class="pre">input_cols</span></code>, and then has a defined <code class="docutils literal notranslate"><span class="pre">transform</span></code> method to output a specified set of <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">cols</span></code>. Included in Appendix 2 is some code to run this transformer across a dataframe. You can use this same structure to develop and test new transformers in a notebook.</p>
+<p>Once this feature transformation is done and dusted, we are ready to use Nels’ HyCastle machinery to pull together our feature sets for model training.</p>
+</section>
+</section>
+<section id="appendix-1-running-sql-in-jupyter">
+<h2>Appendix 1: Running SQL in Jupyter<a class="headerlink" href="#appendix-1-running-sql-in-jupyter" title="Permalink to this headline">#</a></h2>
+<p>(magpied from Nels’ existing HyMind exemplar)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="kn">import</span> <span class="nn">arrow</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="kn">from</span> <span class="nn">hylib.dt</span> <span class="kn">import</span> <span class="n">LONDON_TZ</span><span class="p">,</span> <span class="n">convert_dt_columns_to_london_tz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ward</span> <span class="o">=</span> <span class="s1">&#39;T03&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="emap-credentials">
+<h3>EMAP credentials<a class="headerlink" href="#emap-credentials" title="Permalink to this headline">#</a></h3>
+<p>EMAP credentials are allocated per user and not stored in the environment variables.
+You do not want your credentials to leak into the source repository.</p>
+<p>One way of safeguarding is to create a file called <code class="docutils literal notranslate"><span class="pre">secret</span></code> at the top level of the <strong>HyMind</strong> repository (one above this notebook).<br />
+Do this here in Jupyter and not a local copy of the repo.</p>
+<p>The first line should be your UDS <strong>username</strong> and the second line should be your UDS <strong>password</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">secret</span></code> has been added to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> and will be excluded from the repository.</p>
+<p>Read your username &amp; password into the environment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;EMAP_DB_USER&#39;</span><span class="p">],</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;EMAP_DB_PASSWORD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../secret&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uds_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;EMAP_DB_HOST&#39;</span><span class="p">)</span>
+<span class="n">uds_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;EMAP_DB_NAME&#39;</span><span class="p">)</span>
+<span class="n">uds_port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;EMAP_DB_PORT&#39;</span><span class="p">)</span>
+<span class="n">uds_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;EMAP_DB_USER&#39;</span><span class="p">)</span>
+<span class="n">uds_passwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;EMAP_DB_PASSWORD&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a SQLAlchemy Engine for accessing the UDS:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">emapdb_engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;postgresql://</span><span class="si">{</span><span class="n">uds_user</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">uds_passwd</span><span class="si">}</span><span class="s1">@</span><span class="si">{</span><span class="n">uds_host</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">uds_port</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">uds_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hyflow.settings</span> <span class="kn">import</span> <span class="n">SQL_DIR</span>
+<span class="n">visits_sql</span> <span class="o">=</span> <span class="p">(</span><span class="n">SQL_DIR</span> <span class="o">/</span> <span class="s2">&quot;emap__icu_location_visit_history.sql&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the point-in-time we are interested in:  7am on 17/07/2021 BST</span>
+<span class="n">horizon_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">LONDON_TZ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hylib.load.hydef</span> <span class="kn">import</span> <span class="n">beds_from_hydef</span>
+<span class="n">beds_df</span> <span class="o">=</span> <span class="n">beds_from_hydef</span><span class="p">(</span><span class="n">ward</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">visits_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span>
+    <span class="n">visits_sql</span><span class="p">,</span>
+    <span class="n">emapdb_engine</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;horizon_dt&quot;</span><span class="p">:</span> <span class="n">horizon_dt</span><span class="p">,</span> <span class="s2">&quot;locations&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">beds_df</span><span class="o">.</span><span class="n">hl7_location</span><span class="p">)},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">visits_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="appendix-2-running-some-transformer-code">
+<h2>Appendix 2: Running some Transformer code<a class="headerlink" href="#appendix-2-running-some-transformer-code" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span>
+
+<span class="kn">from</span> <span class="nn">hylib.load.hydef</span> <span class="kn">import</span> <span class="n">icu_observation_types_from_hydef</span>
+
+<span class="kn">from</span> <span class="nn">hyflow.load.icu.icu_episode_slices</span> <span class="kn">import</span> <span class="n">icu_episode_slices_from_hyflow</span>
+<span class="kn">from</span> <span class="nn">hyflow.load.icu.icu_observations</span> <span class="kn">import</span> <span class="n">icu_observations_from_hyflow</span>
+<span class="kn">from</span> <span class="nn">hyflow.load.icu.icu_patients</span> <span class="kn">import</span> <span class="n">icu_patients_from_hyflow</span>
+
+<span class="kn">from</span> <span class="nn">hygear.transform.cog1.base</span> <span class="kn">import</span> <span class="n">BaseCog1Transformer</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AdmissionAgeTransformer</span><span class="p">(</span><span class="n">BaseCog1Transformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An transformer for age at admission</span>
+
+<span class="sd">    Output Features:</span>
+<span class="sd">        `admission_age_years`: float</span>
+<span class="sd">            Patient&#39;s age in years</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">,</span> <span class="s2">&quot;admission_dt&quot;</span><span class="p">,</span> <span class="s2">&quot;dob&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">output_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">,</span> <span class="s2">&quot;admission_age_years&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">years</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">dob</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;admission_dt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">)</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;dob&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">output_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_df</span>
+
+        <span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;admission_age_years&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">years</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_cols</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ward</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">horizon_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">00</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">LONDON_TZ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">episode_slices_df</span> <span class="o">=</span> <span class="n">icu_episode_slices_from_hyflow</span><span class="p">(</span><span class="n">ward</span><span class="p">,</span> <span class="n">horizon_dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">episode_slices_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">patients_df</span> <span class="o">=</span> <span class="n">icu_patients_from_hyflow</span><span class="p">(</span>
+    <span class="n">ward</span><span class="p">,</span> <span class="n">horizon_dt</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">episode_slices_df</span><span class="o">.</span><span class="n">episode_slice_id</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age_input_df</span> <span class="o">=</span> <span class="n">episode_slices_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">,</span> <span class="s2">&quot;admission_dt&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">patients_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">,</span> <span class="s2">&quot;dob&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">),</span>
+    <span class="n">on</span><span class="o">=</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age_df</span> <span class="o">=</span> <span class="n">AdmissionAgeTransformer</span><span class="p">(</span><span class="n">ward</span><span class="p">,</span> <span class="n">horizon_dt</span><span class="p">,</span> <span class="n">age_input_df</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
+<span class="n">output_df</span> <span class="o">=</span> <span class="n">episode_slices_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">age_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;episode_slice_id&quot;</span><span class="p">),</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;episode_slice_id&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">age_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "xpython",
+            path: "./20-flowehr"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'xpython'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By HYLODE team<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

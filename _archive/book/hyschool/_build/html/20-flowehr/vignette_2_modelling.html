@@ -1,0 +1,1276 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Vignette - a Modelling Workflow &#8212; HySchool</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Content in Jupyter Book" href="../90-using-jupyter-book/content.html" />
+    <link rel="prev" title="Vignette - HyCastle, the lens and building a training set" href="vignette_1_training_set.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">HySchool</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  EMAP for beginners
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-emap-4-beginners/how_to_use_this_guide.html">
+   How to use this guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-emap-4-beginners/EMAP_quick_tour.html">
+   EMAP quick tour
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-emap-4-beginners/uclh-working-with-star.html">
+   Working with EMAP star
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FlowEHR
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="vignette_0__README.html">
+   Hi
+   <em>
+    (Hy?)
+   </em>
+   there…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vignette_0_intro.html">
+   Vignette - end-to-end exemplar
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vignette_1_training_set.html">
+   Vignette - HyCastle, the lens and building a training set
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Vignette - a Modelling Workflow
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Using JupyterBook
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../90-using-jupyter-book/content.html">
+   Content in Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../90-using-jupyter-book/markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../90-using-jupyter-book/notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../95-Appendices/using-superset.html">
+   Superset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../95-Appendices/configuring-R-at-UCLH.html">
+   Configuring R at UCLH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../95-Appendices/tips.html">
+   Miscellaneous tips
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/hylode/HySchool at UCLH/dev?urlpath=tree/docs/20-flowehr/vignette_2_modelling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/hylode/HySchool at UCLH"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/hylode/HySchool at UCLH/issues/new?title=Issue%20on%20page%20%2F20-flowehr/vignette_2_modelling.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/20-flowehr/vignette_2_modelling.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Vignette - a Modelling Workflow
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-validation-sets">
+   Training &amp; Validation Sets
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mlflow-training-workflow">
+   MLFlow Training Workflow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-fuller-example">
+     A fuller example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#checking-models-out-from-mlflow">
+   Checking models out from MLFlow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-pass-prediction">
+     Forward pass prediction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#further-evaluation">
+     Further evaluation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Vignette - a Modelling Workflow</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Vignette - a Modelling Workflow
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-validation-sets">
+   Training &amp; Validation Sets
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mlflow-training-workflow">
+   MLFlow Training Workflow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-fuller-example">
+     A fuller example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#checking-models-out-from-mlflow">
+   Checking models out from MLFlow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-pass-prediction">
+     Forward pass prediction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#further-evaluation">
+     Further evaluation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="vignette-a-modelling-workflow">
+<h1>Vignette - a Modelling Workflow<a class="headerlink" href="#vignette-a-modelling-workflow" title="Permalink to this headline">#</a></h1>
+<p>In this notebook, we look at how the various different pieces of the Hylode architecture come together to ease the ML4H model development/deployment process.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">vignette_1_training_set</span></code>, we looked at how HyCastle and the lens abstraction make for consistent training pathways between model development and deployment.</p>
+<p>Here, we bring these components together in a modelling workflow. Core steps are to show:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~ how HyCastle and the lens come together to make our training &amp; validation sets
+~ how we use MLFlow as a central spine for recording our model training
+~ how we then can check out models from MLFlow - either for further evaluation or live deployment 
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="imports">
+<h1>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h1>
+<p>We start with a long list of imports…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="kn">import</span> <span class="nn">cloudpickle</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">mlflow</span>
+<span class="kn">from</span> <span class="nn">mlflow.tracking</span> <span class="kn">import</span> <span class="n">MlflowClient</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ParameterGrid</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">log_loss</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.exceptions</span> <span class="kn">import</span> <span class="n">NotFittedError</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_is_fitted</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span><span class="p">,</span> <span class="n">make_column_selector</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">MissingIndicator</span><span class="p">,</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span> <span class="k">as</span> <span class="n">SKPipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FunctionTransformer</span><span class="p">,</span>
+    <span class="n">OneHotEncoder</span><span class="p">,</span>
+    <span class="n">OrdinalEncoder</span><span class="p">,</span>
+    <span class="n">StandardScaler</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">datetime</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">cloudpickle</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">yaml</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;cloudpickle&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hylib.dt</span> <span class="kn">import</span> <span class="n">LONDON_TZ</span>
+<span class="kn">from</span> <span class="nn">hycastle.lens.base</span> <span class="kn">import</span> <span class="n">BaseLens</span>
+<span class="kn">from</span> <span class="nn">hycastle.lens.transformers</span> <span class="kn">import</span> <span class="n">DateTimeExploder</span><span class="p">,</span> <span class="n">timedelta_as_hours</span>
+<span class="kn">from</span> <span class="nn">hycastle.lens.icu</span> <span class="kn">import</span> <span class="n">BournvilleICUSitRepLens</span>
+<span class="kn">from</span> <span class="nn">hycastle.icu_store.live</span> <span class="kn">import</span> <span class="n">live_dataset</span>
+<span class="kn">from</span> <span class="nn">hycastle.icu_store.retro</span> <span class="kn">import</span> <span class="n">retro_dataset</span>
+<span class="kn">from</span> <span class="nn">hymind.lib.models.icu_aggregate</span> <span class="kn">import</span> <span class="n">AggregateDemandModel</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialise MLFlow</span>
+<span class="n">mlflow_var</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HYMIND_REPO_TRACKING_URI&#39;</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="n">mlflow_var</span><span class="p">)</span>   
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">MlflowClient</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="training-validation-sets">
+<h1>Training &amp; Validation Sets<a class="headerlink" href="#training-validation-sets" title="Permalink to this headline">#</a></h1>
+<p>Okay. So as our first port of call, we want to show how HyCastle and the lens abstraction can furnish training and validation sets for our modelling efforts.</p>
+<p>To recap, we start here with the <code class="docutils literal notranslate"><span class="pre">retro_dataset</span></code> function from HyCastle.</p>
+<p>We pass the argument ‘T03’ to restrict the patients we look at to the T03 ICU at UCLH. Because of the way Hylode has been configured for the ICU, this then gives one set of features (a row) per hour for every patient in our retrospective dataset.</p>
+<p>Let’s have a look:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">retro_dataset</span><span class="p">(</span><span class="s1">&#39;T03&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check to see the date range that <code class="docutils literal notranslate"><span class="pre">retro_dataset</span></code> covers. (n.b. <code class="docutils literal notranslate"><span class="pre">horizon_dt</span></code> is the datetime for the particular hourly snapshot of a patient’s features)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">horizon_dt</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">horizon_dt</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay. So we see that the retrospective data currently in Hylode runs from c. April ‘21. For the sake of this demo, let’s take April, May &amp; June as our training data. And then July for validation.</p>
+<p>We define some corresponding datetimes…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_train_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">LONDON_TZ</span><span class="p">)</span>
+<span class="n">end_train_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">LONDON_TZ</span><span class="p">)</span>
+
+<span class="n">start_valid_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">LONDON_TZ</span><span class="p">)</span>
+<span class="n">end_valid_dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">LONDON_TZ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using these date ranges, we take slices of the <code class="docutils literal notranslate"><span class="pre">retro_dataset</span></code> corresponding to our training and validation windows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">start_train_dt</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">end_train_dt</span><span class="p">)]</span>
+<span class="n">valid_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">start_valid_dt</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">end_valid_dt</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a start, as we now have the appropriate time restrictions for a basic experimental setup – although you will notice that our <code class="docutils literal notranslate"><span class="pre">train_df</span></code> still has the full set of output features from HyCastle. As per our demonstration of the <code class="docutils literal notranslate"><span class="pre">lens</span></code> in the previous notebook, we want to restrict the set of features we see and pre-process them appropriately.</p>
+<p>We start by defining a lens as below… (If this still looks a bit daunting, the appendix in the previous notebook on inspecting the different components of the lens might come in useful.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DemoLens</span><span class="p">(</span><span class="n">BaseLens</span><span class="p">):</span>
+    <span class="n">numeric_output</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">index_col</span> <span class="o">=</span> <span class="s2">&quot;episode_slice_id&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">input_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;episode_slice_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;admission_age_years&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;avg_heart_rate_1_24h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;max_temp_1_12h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;avg_resp_rate_1_24h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;elapsed_los_td&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;admission_dt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;horizon_dt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;n_inotropes_1_4h&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wim_1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bay_type&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sex&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;vent_type_1_4h&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">specify</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ColumnTransformer</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;passthrough&quot;</span><span class="p">,</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;episode_slice_id&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;admission_age_years&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;n_inotropes_1_4h&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;wim_1&quot;</span><span class="p">,</span>
+                    <span class="p">],</span>
+                <span class="p">),</span>
+                <span class="p">(</span><span class="s2">&quot;bay_type_enc&quot;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(),</span> <span class="p">[</span><span class="s2">&quot;bay_type&quot;</span><span class="p">]),</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;sex_enc&quot;</span><span class="p">,</span>
+                    <span class="n">OrdinalEncoder</span><span class="p">(</span>
+                        <span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;use_encoded_value&quot;</span><span class="p">,</span> <span class="n">unknown_value</span><span class="o">=-</span><span class="mi">1</span>
+                    <span class="p">),</span>
+                    <span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;admission_dt_exp&quot;</span><span class="p">,</span>
+                    <span class="n">DateTimeExploder</span><span class="p">(),</span>
+                    <span class="p">[</span><span class="s2">&quot;admission_dt&quot;</span><span class="p">,</span> <span class="s2">&quot;horizon_dt&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;vent_type_1_4h_enc&quot;</span><span class="p">,</span>
+                    <span class="n">OrdinalEncoder</span><span class="p">(</span>
+                        <span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;use_encoded_value&quot;</span><span class="p">,</span> <span class="n">unknown_value</span><span class="o">=-</span><span class="mi">1</span>
+                    <span class="p">),</span>
+                    <span class="p">[</span><span class="s2">&quot;vent_type_1_4h&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;vitals_impute&quot;</span><span class="p">,</span>
+                    <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">add_indicator</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;avg_heart_rate_1_24h&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;max_temp_1_12h&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;avg_resp_rate_1_24h&quot;</span><span class="p">,</span>
+                    <span class="p">],</span>
+                <span class="p">),</span>
+                <span class="c1"># note we include then elapsed length of stay as a feature for our model,</span>
+                <span class="c1"># as an alternative to training multiple models for different timepoints</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;elapsed_los_td_hrs&quot;</span><span class="p">,</span>
+                    <span class="n">FunctionTransformer</span><span class="p">(</span><span class="n">timedelta_as_hours</span><span class="p">),</span>
+                    <span class="p">[</span><span class="s2">&quot;elapsed_los_td&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So what we want to do is apply this lens to <code class="docutils literal notranslate"><span class="pre">train_df</span></code> and <code class="docutils literal notranslate"><span class="pre">valid_df</span></code> to give us our feature sets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we start be instantiating the lens</span>
+<span class="n">lens</span> <span class="o">=</span> <span class="n">DemoLens</span><span class="p">()</span>
+
+<span class="c1"># then we fit the lens on the training set, and transform that df</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">lens</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="c1"># similarly for the validation set, although here we only use transform(),</span>
+<span class="c1"># as we have already fit the lens on train_df</span>
+<span class="n">X_valid</span> <span class="o">=</span> <span class="n">lens</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">valid_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ICU</span> <span class="pre">Demand</span></code> pipeline also usefully includes our predictive label of whether or not the patient was discharged within 48 hours of the <code class="docutils literal notranslate"><span class="pre">horizon_df</span></code>. We use this to define our targets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;discharged_in_48hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">y_valid</span> <span class="o">=</span> <span class="n">valid_df</span><span class="p">[</span><span class="s1">&#39;discharged_in_48hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To check that the lens has made our features and labels look the way our SKLearn model wants them to look, let’s pass them through a dummy Random Forest run:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">%</span><span class="n">time</span> <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great! So with that our training and validation sets are ready to start running experiments.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mlflow-training-workflow">
+<h1>MLFlow Training Workflow<a class="headerlink" href="#mlflow-training-workflow" title="Permalink to this headline">#</a></h1>
+<p>In Hylode modelling work to date, a central part of the workflow has been an open source software product from Databricks called MLFlow. Why have we felt the need to incorporate this into our stack?</p>
+<p>Even working on an individual level, rigour around logging experimental results and outcomes yield a strong dividend. MLFlow provides a very flexible framework for achieving this - whether one is simply looking to keep house or aiming higher, perhaps at easy reproduction of results.</p>
+<p>In the Hylode scenario, where we are looking at collaboration between multiple different team members - both data scientists and software developers - the return from using a tool like MLFlow is an order of magnitude greater still. By centralising our models and data on performance, MLFlow eases the handover of models trained by the HyMind team into models deployed by the HySys team.</p>
+<p>Excellent MLFlow documentation can be found <a class="reference external" href="https://www.mlflow.org/docs/latest/index.html">here</a>.</p>
+<p>Here our aims are modest. We just want to log a simple modelling workflow for ICU discharge. Key elements to look out for are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~ the entire experiment logged against a single experiment ID
+~ metadata about training and validation sets logged consistently in MLFlow
+~ all metrics (accuracy etc.) logged from each training run on MLFlow
+~ the actual model file for each training run stored in MLFlow (from where it&#39;s easy for the HySys team to check it out).
+</pre></div>
+</div>
+<p>As a first step let’s create a new experiment. We use the pipe-separated <code class="docutils literal notranslate"><span class="pre">(Owner|Type|Name|Date)</span></code> naming convention to keep each other’s work from getting mixed up:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Owner|Type|Name|Date e.g. &#39;TK|models|vignette|2021-11-22&#39;</span>
+<span class="c1"># n.b. if experiment name already exists, this cell with throw an error</span>
+<span class="c1">#</span>
+<span class="c1"># =&gt; add a unique experiment below &lt;=</span>
+<span class="n">exp_name</span> <span class="o">=</span>
+
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MLFLOW_EXPERIMENT_NAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exp_name</span>
+<span class="n">experiment_id</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">create_experiment</span><span class="p">(</span><span class="n">exp_name</span><span class="p">)</span>
+
+<span class="n">experiment_id</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this done, you should see a new experiment exists on the bottom left hand side of the MLFlow web user interface (which we refer to as the HyMind Repo). As of the time of writing, the HyMind Repo can be accessed <a class="reference external" href="http://uclvlddpragae08:5008/">here</a></p>
+<p>Now. What we want to do as we move along the modelling pathway is to log the salient bits of information in MLFlow as we go. To make this easier to do, we start by defining a few convenience functions to log strings, dicts and lenses.</p>
+<p>n.b. these all rely on <code class="docutils literal notranslate"><span class="pre">mlflow.log_artifact()</span></code> which takes a file from our local directory and adds it to the HyMind Repo. (Alongside our import statements above, we let MLFlow where our Repo is using the <code class="docutils literal notranslate"><span class="pre">HYMIND_REPO_TRACKING_URI</span></code> environment variable.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmp_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;tmp&#39;</span><span class="p">)</span>
+<span class="n">tmp_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">mlflow_log_string</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="n">full_path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="n">filename</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">mlflow_log_tag_dict</span><span class="p">(</span><span class="n">tag_dict</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Logs tag dict to MLflow (while preserving order unlike mlflow.log_dict)&quot;&quot;&quot;</span>
+    <span class="n">full_path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="n">filename</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">tag_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">mlflow_log_lens</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+    <span class="n">full_path</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">pickle</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">full_path</span><span class="p">,</span> <span class="s1">&#39;lens&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First off, to get a hang of this, let’s run a test of sending some data to MLFlow. Let’s try storing the start and end time for our trainging and validation runs…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tag_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;start_train_dt&#39;</span><span class="p">:</span> <span class="n">start_train_dt</span><span class="p">,</span>
+    <span class="s1">&#39;end_train_dt&#39;</span><span class="p">:</span> <span class="n">end_train_dt</span><span class="p">,</span>    
+    <span class="s1">&#39;start_valid_dt&#39;</span><span class="p">:</span> <span class="n">start_valid_dt</span><span class="p">,</span>
+    <span class="s1">&#39;end_valid_dt&#39;</span><span class="p">:</span> <span class="n">end_valid_dt</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+    <span class="n">mlflow_log_tag_dict</span><span class="p">(</span><span class="n">tag_dict</span><span class="p">,</span> <span class="s1">&#39;tag_dict.yaml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, if you navigate back to the HyMind Repo MLFlow UI and click on the new experiment that you created (on the bottom left hand side), you should now see that there is a recent row in the table that lists runs for this experiment.</p>
+<p>If you then click on this run, you can scroll down the page and under ‘Artifacts’ you will find a copy of <code class="docutils literal notranslate"><span class="pre">tag_dict.yaml</span></code>. This is now stored in the HyMind Repo to pull out as and when we need.</p>
+<p>One point worth mentioning the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">mlflow.start_run()</span></code> syntax above, this is the standard MLFlow way to create a new run (nested under the current experiment). The <code class="docutils literal notranslate"><span class="pre">with</span></code> statement automatically closes the run at the end of the indented code.</p>
+<section id="a-fuller-example">
+<h2>A fuller example<a class="headerlink" href="#a-fuller-example" title="Permalink to this headline">#</a></h2>
+<p>With slightly better sense of how MLFlow works, we now turn to a fuller exemplar workflow. The example we look at here is running a simple parameter grid search for a Random Forest model of ICU discharge at 48 hours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the two most influential parameters </span>
+<span class="c1"># cf. https://scikit-learn.org/stable/modules/ensemble.html#parameters</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="s1">&#39;max_features&#39;</span><span class="p">:[</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;sqrt&quot;</span><span class="p">,</span> <span class="s2">&quot;log2&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># as the outcome of each training run (even with the same parameters) is non-deterministic,</span>
+<span class="c1"># we run two training runs per parameter combination.</span>
+<span class="n">runs_per_param_set</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">runs_per_param_set</span><span class="p">):</span>
+    
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">ParameterGrid</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">():</span>
+            
+            <span class="c1"># logging the tag dictionary, the run_type</span>
+            <span class="n">mlflow_log_tag_dict</span><span class="p">(</span><span class="n">tag_dict</span><span class="p">,</span> <span class="s1">&#39;tag_dict.yaml&#39;</span><span class="p">)</span>
+            <span class="n">mlflow</span><span class="o">.</span><span class="n">set_tag</span><span class="p">(</span><span class="s2">&quot;run_type&quot;</span><span class="p">,</span> <span class="s2">&quot;training&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># set and log this run&#39;s set of model parameters</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="o">**</span><span class="n">g</span><span class="p">)</span>
+            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_params</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+            <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+            
+            <span class="c1"># calculate and log training and validation set accuracy</span>
+            <span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s1">&#39;train_accuracy&#39;</span><span class="p">,</span> <span class="n">train_accuracy</span><span class="p">)</span>
+            <span class="n">valid_accuracy</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_valid</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>       
+            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s1">&#39;valid_accuracy&#39;</span><span class="p">,</span> <span class="n">valid_accuracy</span><span class="p">)</span>
+            
+            <span class="c1"># ditto for confusion matrices</span>
+            <span class="n">train_confusion</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+            <span class="n">mlflow_log_string</span><span class="p">(</span><span class="n">train_confusion</span><span class="p">,</span> <span class="s1">&#39;train_confusion.txt&#39;</span><span class="p">)</span>
+            <span class="n">valid_confusion</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">y_valid</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+            <span class="n">mlflow_log_string</span><span class="p">(</span><span class="n">valid_confusion</span><span class="p">,</span> <span class="s1">&#39;valid_confusion.txt&#39;</span><span class="p">)</span>
+
+            <span class="c1"># store the trained SKLearn model, so we can check it out later</span>
+            <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After this cells runs (which takes a minute or two), if you now return to the MLFlow UI, you will see that the experiment you created is now populated with a whole list of runs, one for each parameter set above. Clicking down into the run you will see all the attributes above have been stored (the tag dictionary, the parameters, the metrics, the model etc.)</p>
+<p>As a next step, we might want to pick out the model parameters that seem to have performed best - so we can then use these for further evaluation.</p>
+<p>These runs can also be straightforwardly access from a notebook using <code class="docutils literal notranslate"><span class="pre">mlflow.search_runs()</span></code>…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">runs</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">search_runs</span><span class="p">()</span>
+<span class="n">runs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From which starting point, it’s simple to mark out the parameter set with the best mean validation accuracy, as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">runs</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;params&#39;</span><span class="p">)]</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="n">runs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">params</span><span class="p">)[</span><span class="s1">&#39;metrics.valid_accuracy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<span class="n">best_row</span> <span class="o">=</span> <span class="n">runs</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">best_params</span><span class="p">]</span>
+
+<span class="n">best_run_id</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">best_row</span><span class="p">[</span><span class="s1">&#39;run_id&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">best_run_id</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And then we can tag this as the best run from our training loop - and also log the lens we used to train it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_id</span><span class="o">=</span><span class="n">best_run_id</span><span class="p">):</span>
+    <span class="c1"># tag the run as best_row</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_tag</span><span class="p">(</span><span class="s1">&#39;best_run&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   
+
+    <span class="c1"># log the lens</span>
+    <span class="n">mlflow_log_lens</span><span class="p">(</span><span class="n">lens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the same breath, MLFlow gives us the option to register our model, which makes it easy to access and work with going forward - so let’s do that too:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># =&gt; add a unique model name below &lt;=</span>
+<span class="c1"># e.g. tk-random_forest-demo</span>
+<span class="n">model_name</span> <span class="o">=</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># n.b. each time you run this cell with the same model_name, the model version will increase by one</span>
+<span class="n">registered_model</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;runs:/</span><span class="si">{</span><span class="n">best_run_id</span><span class="si">}</span><span class="s1">/model&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which is great. And now you should be able to navigate to the MLFlow UI - and if you click on the ‘Models’ tab at the top of the page you should see your newly registered model waiting there on the list.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="checking-models-out-from-mlflow">
+<h1>Checking models out from MLFlow<a class="headerlink" href="#checking-models-out-from-mlflow" title="Permalink to this headline">#</a></h1>
+<p>By this stage of the notebook, we have invested quite a lot of effort in creating a parallel record of our experiment in MLFlow. In the final section of the notebook, we seek to show how this investment pays off. We work through two principal workflows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~ checking out the model for forward pass prediction
+~ checking it out for further evaluation
+</pre></div>
+</div>
+<p>But let’s start simple by retrieving the model. First, a couple of simple methods that allow us to pull out info about the model we have just saved:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># first off, we can surface basic info about the model using our model_name and version.</span>
+
+<span class="n">model_info</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_model_version</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">registered_model</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="n">model_info</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can then go deeper and inspect the run itself</span>
+<span class="n">run_info</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_run</span><span class="p">(</span><span class="n">model_info</span><span class="o">.</span><span class="n">run_id</span><span class="p">)</span>
+<span class="n">run_info</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Happy that the information above looks about right, we can now use the <code class="docutils literal notranslate"><span class="pre">model_name</span></code> and <code class="docutils literal notranslate"><span class="pre">version</span></code> to load our model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;models:/</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">registered_model</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Moreover, using <code class="docutils literal notranslate"><span class="pre">model_info.run_id</span></code>, we can also reload the lens we used to train the model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+    <span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    
+    <span class="n">client</span><span class="o">.</span><span class="n">download_artifacts</span><span class="p">(</span><span class="n">model_info</span><span class="o">.</span><span class="n">run_id</span><span class="p">,</span> <span class="s1">&#39;lens&#39;</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="p">)</span>
+    
+    <span class="n">lens_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">tmp_dir</span> <span class="o">/</span> <span class="s1">&#39;lens&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.pkl&#39;</span><span class="p">))</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">lens_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">loaded_lens</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        
+<span class="n">loaded_lens</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="forward-pass-prediction">
+<h2>Forward pass prediction<a class="headerlink" href="#forward-pass-prediction" title="Permalink to this headline">#</a></h2>
+<p>With the model and the lens loaded, the <code class="docutils literal notranslate"><span class="pre">live_dataset</span></code> from HyCastle makes it extremely straightforward to run the forward pass. (n.b. reusing the identical components to in our retrospective training)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">live_df</span> <span class="o">=</span> <span class="n">live_dataset</span><span class="p">(</span><span class="s1">&#39;T03&#39;</span><span class="p">)</span>
+<span class="n">live_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># and inspecting the dataframe, note the most recent admission_dt</span>
+<span class="n">live_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;episode_slice_id&#39;</span><span class="p">,</span> <span class="s1">&#39;admission_dt&#39;</span><span class="p">,</span> <span class="s1">&#39;bed_code&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_heart_rate_1_24h&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;admission_dt&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s try to run some patient-level predictions based on our saved model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># first we transform the live_df with our loaded_lens</span>
+<span class="n">X_df</span> <span class="o">=</span> <span class="n">loaded_lens</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">live_df</span><span class="p">)</span>
+<span class="n">X_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># making the predictions</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_df</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># adding the predictions to our live_df dataframe</span>
+<span class="n">live_df</span><span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">live_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;episode_slice_id&#39;</span><span class="p">,</span> <span class="s1">&#39;prediction&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can even then get a sense of how this segues into the aggregate prediction problem, using the <code class="docutils literal notranslate"><span class="pre">AggregateDemandModel</span></code> class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>AggregateDemandModel??
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">agg_demand</span> <span class="o">=</span> <span class="n">AggregateDemandModel</span><span class="p">()</span>
+<span class="n">agg_predictions</span> <span class="o">=</span> <span class="n">agg_demand</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> 
+                                     <span class="n">model_input</span><span class="o">=</span><span class="n">live_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">mapper</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;prediction&#39;</span><span class="p">:</span><span class="s1">&#39;prediction_as_real&#39;</span><span class="p">},</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">agg_predictions</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="further-evaluation">
+<h2>Further evaluation<a class="headerlink" href="#further-evaluation" title="Permalink to this headline">#</a></h2>
+<p>Another use case would be that having done our initial training, we still have plenty of work to do evaluating it’s performance. We give a very simple outline here of what that might look like.</p>
+<p>We start by putting our two loaded components from MLFlow: <code class="docutils literal notranslate"><span class="pre">loaded_tag_dict</span></code> and <code class="docutils literal notranslate"><span class="pre">loaded_lens</span></code> together to rebuild our validation set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+    <span class="n">tmp_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+    
+    <span class="n">client</span><span class="o">.</span><span class="n">download_artifacts</span><span class="p">(</span><span class="n">model_info</span><span class="o">.</span><span class="n">run_id</span><span class="p">,</span> <span class="s1">&#39;./&#39;</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="p">)</span>
+    
+    <span class="n">tag_dict_path</span> <span class="o">=</span> <span class="n">tmp_dir</span> <span class="o">/</span> <span class="s1">&#39;tag_dict.yaml&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tag_dict_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="n">loaded_tag_dict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
+        
+<span class="n">loaded_tag_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loaded_valid_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">loaded_tag_dict</span><span class="p">[</span><span class="s1">&#39;start_valid_dt&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
+                 <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">loaded_tag_dict</span><span class="p">[</span><span class="s1">&#39;end_valid_dt&#39;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Recreating our dataset as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_valid</span> <span class="o">=</span> <span class="n">loaded_lens</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">loaded_valid_df</span><span class="p">)</span>
+<span class="n">y_valid</span> <span class="o">=</span> <span class="n">loaded_valid_df</span><span class="p">[</span><span class="s1">&#39;discharged_in_48hr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># then we have already loaded in our model in the previous section</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_id</span><span class="o">=</span><span class="n">best_run_id</span><span class="p">):</span>
+    
+    <span class="n">mlflow_log_tag_dict</span><span class="p">(</span><span class="n">tag_dict</span><span class="p">,</span> <span class="s1">&#39;tag_dict.yaml&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># create a 2-column dataframe of the predicted probabilities and true label,</span>
+    <span class="c1"># for each patient in the validation set</span>
+    <span class="n">eval_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+                <span class="s1">&#39;predict_proba&#39;</span><span class="p">:</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">values</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">],</span> 
+                <span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="n">y_valid</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+               <span class="p">},</span> 
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;predict_proba&#39;</span><span class="p">,</span><span class="s1">&#39;label&#39;</span><span class="p">],</span>
+        <span class="n">index</span><span class="o">=</span><span class="n">X_valid</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>   
+    <span class="n">eval_df</span><span class="p">[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loaded_valid_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;episode_slice_id&#39;</span><span class="p">)[</span><span class="s1">&#39;horizon_dt&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># write eval_df to csv and log in MLFlow</span>
+    <span class="n">eval_path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s1">&#39;eval.csv&#39;</span>
+    <span class="n">eval_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">eval_path</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">eval_path</span><span class="p">)</span>
+    
+    
+    <span class="c1"># use eval_df to store a new metric</span>
+    <span class="n">eval_log_loss</span> <span class="o">=</span> <span class="n">log_loss</span><span class="p">(</span><span class="n">eval_df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span><span class="n">eval_df</span><span class="p">[</span><span class="s1">&#39;predict_proba&#39;</span><span class="p">])</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s1">&#39;log_loss&#39;</span><span class="p">,</span> <span class="n">eval_log_loss</span><span class="p">)</span>
+    
+    
+    <span class="c1"># save a new figure alongside our registered model</span>
+    <span class="n">eval_confusion</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">y_valid</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">eval_confusion</span><span class="p">,</span>
+                              <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;discharged&#39;</span><span class="p">,</span><span class="s1">&#39;remained_after_48hrs&#39;</span><span class="p">])</span>
+    
+    <span class="n">confusion_path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s1">&#39;confusion_fig_2.png&#39;</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span><span class="o">.</span><span class="n">figure_</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">confusion_path</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">confusion_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "xpython",
+            path: "./20-flowehr"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'xpython'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="vignette_1_training_set.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Vignette - HyCastle, the lens and building a training set</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../90-using-jupyter-book/content.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Content in Jupyter Book</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By HYLODE team<br/>
+  
+      &copy; Copyright 2021.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
