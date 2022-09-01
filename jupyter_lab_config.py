@@ -710,7 +710,7 @@
 #                        standard library module, which allows setting of the
 #                        BROWSER environment variable to override it.
 #  Default: ''
-# c.ServerApp.browser = ''
+c.ServerApp.browser = 'chrome'
 
 ## The full path to an SSL/TLS certificate file.
 #  Default: ''
@@ -1055,7 +1055,7 @@ c.ServerApp.port = 8188
 #          Setting to an empty string disables authentication altogether, which
 #  is NOT RECOMMENDED.
 #  Default: '<generated>'
-# c.ServerApp.token = '<generated>'
+c.ServerApp.token = ''
 
 ## Supply overrides for the tornado.web.Application that the Jupyter server uses.
 #  Default: {}

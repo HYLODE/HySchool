@@ -3,9 +3,10 @@ project:
   render:
     - index.qmd
     - "tutorials/"
-    - "!contributing/*"
     - "*.md"
     - about.qmd
+    - "!contributing/*"
+    - "!notebooks/*"
 
 website:
   title: "HySchool"
@@ -27,11 +28,11 @@ website:
         contents:
         - index.qmd
         - about.qmd
-
       - section: "Tutorials"
         contents:
           - tutorials/tutorials.md
           - tutorials/think-bayes.qmd
+          - tutorials/chap01_ex.ipynb
 
 format:
   html:
