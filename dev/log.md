@@ -1,3 +1,15 @@
+2022-09-01
+using the default hyschool environment now
+b/c I think it's largely the same
+https://docs.jupyter.org/en/latest/
+https://jupyterlab.readthedocs.io/en/stable/
+set up a local config by runnning
+
+```sh
+jupyter lab --generate-config
+```
+
+
 2022-08-29
 clean branch quarto
 moved all files including hidden into `./_archive`
