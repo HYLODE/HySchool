@@ -30,6 +30,9 @@ core.*
 # Mac debris
 .DS_Store
 
+# local content
+_filing/*
+
 # local book deployment
 book/hyschool/_build/*
 notebooks/*.csv
