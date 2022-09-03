@@ -4,6 +4,9 @@ project:
     - index.qmd
     - "tutorials/"
     - "onboarding/"
+    - "emap/"
+    - "hylode/"
+    - "faq/"
     - "appendix/"
     - "*.md"
     - about.qmd
@@ -18,6 +21,10 @@ website:
         text: Home
       - href: tutorials/tutorials.md
         text: Tutorials
+      - href: hylode/hylode.qmd
+        text: HYLODE
+      - href: faq/faq.qmd
+        text: FAQ
       - about.qmd
 
   search:
@@ -33,14 +40,27 @@ website:
       - section: "Onboarding"
         contents:
           - onboarding/safe-data-tips.qmd
+          - emap/uclh-working-with-star.ipynb
       - section: "Tutorials"
         contents:
           - tutorials/tutorials.md
           - tutorials/think-bayes.qmd
           - tutorials/chap01_ex.ipynb
+      - section: "HYLODE"
+        contents:
+          - hylode/hylode.qmd
+          - hylode/HyMind-Lab-example.ipynb
+          - hylode/HyMind-ML-example.ipynb
+          - hylode/HyCastle-Lens.ipynb
+          - hylode/vignette_0__README.ipynb
+          - hylode/vignette_0_intro.ipynb
+          - hylode/vignette_1_training.ipynb
+          - hylode/vignette_2_modelling.ipynb
+          - hylode/vignette_3_data_flow.ipynb
       - section: "Appendix"
         contents:
           - appendix/safe-health-data.qmd
+          - emap/emap_quick_tour.md
 
 format:
   html:

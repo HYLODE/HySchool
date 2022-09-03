@@ -1,0 +1,15 @@
+---
+title: "FAQ, How do I?, TIL..."
+listing: table
+---
+
+A space to share FAQ, tips, 'how to's, and 'today I learned' ...
+
+Try to keep each post short.
+
+We recommend 
+
+- the title should be a question
+- the content is a direct answer to that question
+
+If it get's long then consider upgrading the post to a tutorial.
