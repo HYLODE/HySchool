@@ -1,0 +1,35 @@
+# run this file from project root
+# conda env update --file environment.yml --prune
+name: hyschool
+channels:
+  - conda-forge
+dependencies:
+  - arrow=1.2.2
+  - coverage
+  - dash=2.5.1
+  - flake8
+  - ipdb
+  - jupyter
+  - jupyterlab
+  - myst-parser
+  - nbqa
+  - numpy>=1.22.3
+  - orjson
+  - pandas-stubs>=1.2
+  - pandas>=1.1.4
+  - pip
+  - plotly=5.8.0
+  - pre-commit
+  - psycopg2-binary=2.9.3
+  - pyls-isort=0.2.2
+  - pylsp-mypy=0.5.7
+  - pytest
+  - python-lsp-black=1.2.1
+  - python-lsp-server[all]=1.4.1
+  - python=3.9
+  - requests=2.27.1
+  - toml
+  # pip only (non conda libs here)
+  - pip:
+      - empiricaldist  
+prefix: /opt/homebrew/Caskroom/miniforge/base/envs/hyschool

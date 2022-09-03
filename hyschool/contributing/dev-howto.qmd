@@ -2,13 +2,18 @@
 title: "Developer set-up"
 ---
 
-## Basic Quarto set-up
+Install quarto
+
+https://quarto.org/docs/get-started/
+
+## HySchool Set-up
 
 
 ```bash
-cd hyschool
-conda create --name quarto python=3.9 jupyter matplotlib plotly_express
-conda activate quarto
+git clonehttps://hylode.github.io/HySchool/ 
+cd HySchool
+conda env create -f environment.yml
+conda activate hyschool
 ```
 
 then followed instructions here

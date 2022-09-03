@@ -1,3 +1,8 @@
+2022-09-03
+install quarto extension for videos
+https://github.com/quarto-ext/video
+
+
 2022-09-01
 using the default hyschool environment now
 b/c I think it's largely the same
