@@ -3,6 +3,8 @@ project:
   render:
     - index.qmd
     - "tutorials/"
+    - "onboarding/"
+    - "appendix/"
     - "*.md"
     - about.qmd
     - "!contributing/*"
@@ -26,13 +28,19 @@ website:
     contents:
       - section: "Basics"
         contents:
-        - index.qmd
-        - about.qmd
+          - index.qmd
+          - about.qmd
+      - section: "Onboarding"
+        contents:
+          - onboarding/safe-data-tips.qmd
       - section: "Tutorials"
         contents:
           - tutorials/tutorials.md
           - tutorials/think-bayes.qmd
           - tutorials/chap01_ex.ipynb
+      - section: "Appendix"
+        contents:
+          - appendix/safe-health-data.qmd
 
 format:
   html:
