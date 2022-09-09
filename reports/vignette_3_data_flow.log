@@ -22,7 +22,7 @@ from hyflow.fetch.icu.icu_episode_slices import icu_episode_slices_from_emap
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<cell line: 1>[0;34m()[0m
+Cell [0;32mIn [1], line 1[0m
 [0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mhyflow[39;00m[38;5;21;01m.[39;00m[38;5;21;01mfetch[39;00m[38;5;21;01m.[39;00m[38;5;21;01micu[39;00m[38;5;21;01m.[39;00m[38;5;21;01micu_episode_slices[39;00m [38;5;28;01mimport[39;00m icu_episode_slices_from_emap
 
 [0;31mModuleNotFoundError[0m: No module named 'hyflow'
