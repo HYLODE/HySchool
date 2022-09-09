@@ -15,7 +15,7 @@ parts:
       - file: 20-flowehr/vignette_0_intro
       - file: 20-flowehr/vignette_1_training_set
       - file: 20-flowehr/vignette_2_modelling
-      - file: 20-flowehr/vignette_3_dat_flow
+      - file: 20-flowehr/vignette_3_data_flow
     - caption: Using JupyterBook
       chapters:
       - file: 90-using-jupyter-book/content
