@@ -8,7 +8,6 @@ project:
     - "hylode/"
     - "faq/"
     - "about/"
-    - "about/people/"
     - "appendix/"
     - "*.md"
     - about.qmd
