@@ -37,6 +37,10 @@ _filing/*
 book/hyschool/_build/*
 notebooks/*.csv
 
+# noobie
+noobie/hello_files/*
+noobie/hello.html
+
 # website
 noobie/hello.html
 noobie/hello_files/*
