@@ -32,3 +32,10 @@ core.*
 
 # local book deployment
 book/hyschool/_build/*
+notebooks/*.csv
+
+# website
+noobie/hello.html
+noobie/hello_files/*
+hyschool/_site/*
+hyschool/.quarto
